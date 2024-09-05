@@ -1,0 +1,129 @@
+{
+  "name": "Mark Utility Bill Pipeline",
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "utility_name",
+      "customer_name",
+      "billing_account_number",
+      "billing_address",
+      "billing_period_start",
+      "billing_period_end",
+      "meters"
+    ],
+    "properties": {
+      "meters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "meter_id",
+            "total_kwh",
+            "max_kw",
+            "total_cost_usd"
+          ],
+          "properties": {
+            "max_kw": {
+              "type": "number",
+              "description": "Maximum kw used"
+            },
+            "meter_id": {
+              "type": "string",
+              "description": "Identifier for the meter read. Sometimes referred to as 'Meter Number'"
+            },
+            "total_kwh": {
+              "type": "number",
+              "description": "Total used kWh"
+            },
+            "line_items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "label",
+                  "unit",
+                  "volume",
+                  "rate",
+                  "cost_usd"
+                ],
+                "properties": {
+                  "rate": {
+                    "type": "number",
+                    "description": "Rate charged per unit of electricity"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "description": "Unit of electricity usage measurement"
+                  },
+                  "label": {
+                    "type": "string",
+                    "description": "Name of line item"
+                  },
+                  "volume": {
+                    "type": "number",
+                    "description": "Amount of electricity used"
+                  },
+                  "cost_usd": {
+                    "type": "number",
+                    "description": "Total cost of line item"
+                  }
+                }
+              }
+            },
+            "tariff_label": {
+              "type": "string"
+            },
+            "total_cost_usd": {
+              "type": "number",
+              "description": "Meter reading total"
+            },
+            "service_account": {
+              "type": "string"
+            },
+            "service_address": {
+              "type": "string",
+              "description": "Address of meter billed if different from billing address"
+            }
+          }
+        }
+      },
+      "utility_name": {
+        "type": "string",
+        "description": "Name of service provider"
+      },
+      "customer_name": {
+        "type": "string",
+        "description": "Name of customer paying the bill"
+      },
+      "billing_address": {
+        "type": "string",
+        "description": "Address of customer"
+      },
+      "billing_period_end": {
+        "type": "string",
+        "format": "date",
+        "description": "End date of provided bill"
+      },
+      "service_identifier": {
+        "type": "string",
+        "description": "Type of service provided"
+      },
+      "billing_period_start": {
+        "type": "string",
+        "format": "date",
+        "description": "Start date of provided bill"
+      },
+      "billing_account_number": {
+        "type": "string",
+        "description": "Account number of customer"
+      }
+    },
+    "description": "Utility Bill"
+  },
+  "outputSchemaName": "Utility Bill Schema",
+  "webhookEnabled": false,
+  "webhookURL": "",
+  "webhookTransformErrorURL": "",
+  "independentDocumentProcessingEnabled": false
+
+}

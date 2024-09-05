@@ -1,0 +1,28 @@
+{
+    "name": "Hello, bem.ai World!",
+    "build": {
+      "dockerfile": "../Dockerfile",
+      "context": ".."
+    },
+    "forwardPorts": [5001],
+    "containerEnv": {
+      "BEM_API_KEY": "${localEnv:BEM_API_KEY}",
+      "BEM_SECRET": "${localEnv:BEM_SECRET}"
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "GitHub.copilot",
+          "ms-python.pylance"
+        ],
+        "settings": { 
+          "terminal.integrated.shell.linux": "/bin/bash"
+        }  
+      }
+    },
+    "postCreateCommand": "python3 bem.py",
+    "postStartCommand": "python3 bem.py"
+    }
+
+  

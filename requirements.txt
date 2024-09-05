@@ -1,0 +1,4 @@
+# https://pypi.org/project/Flask/
+Flask==3.0.3
+# https://github.com/simple-salesforce/simple-salesforce
+simple_salesforce
